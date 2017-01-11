@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_main_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="none"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.risojanitor.clevermhd2.MainScreen"
+    tools:showIn="@layout/activity_main_screen">
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+
+
+        <TextView
+            android:id="@+id/nadpmesto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:typeface="serif"
+            android:textSize="14pt"
+            android:textStyle="bold"
+            android:paddingBottom="10dip"/>
+
+
+        <View
+            android:id="@+id/ciara"
+            android:layout_height="1dp"
+            android:layout_width="fill_parent"
+            android:layout_weight="0"
+            android:background="#0000FF"
+            android:layout_below="@id/nadpmesto"/>
+
+        <View
+            android:id="@+id/ciarabiela"
+            android:layout_height="4dp"
+            android:layout_width="fill_parent"
+            android:layout_weight="0"
+            android:background="#FFFFFF"
+            android:layout_below="@id/ciara"/>
+
+        <Button
+            android:id="@+id/rychvyhlbtn"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:background="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:layout_below="@id/ciarabiela"
+            />
+
+        <TextView
+            android:id="@+id/textodkial"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:typeface="serif"
+            android:textSize="8pt"
+            android:text="@string/odkial"
+            android:textColor="#0000FF"
+            android:layout_below="@id/rychvyhlbtn"
+            android:paddingBottom="10dip"
+            android:paddingTop="5dip"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/odkialplocha"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textodkial"
+            android:background="#ffb8ebb5"
+            android:inputType="text"
+            android:completionThreshold="1"/>
+
+        <TextView
+            android:id="@+id/textkam"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:typeface="serif"
+            android:textSize="8pt"
+            android:text="@string/kam"
+            android:textColor="#0000FF"
+            android:layout_below="@id/odkialplocha"
+            android:paddingBottom="10dip"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/kamplocha"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textkam"
+            android:inputType="text"
+            android:background="#ffb8ebb5"
+            android:completionThreshold="1"/>
+
+        <RadioGroup
+            android:id="@+id/radioSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/kamplocha"
+            >
+
+            <RadioButton
+                android:id="@+id/praca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pracovny"
+                android:checked="true"
+                android:textColor="#0000FF"
+                android:buttonTint="#0000FF"/>
+
+            <RadioButton
+                android:id="@+id/prazdniny"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prazdniny"
+                android:textColor="#0000FF"
+                android:buttonTint="#0000FF"/>
+
+            <RadioButton
+                android:id="@+id/vikend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vikend"
+                android:textColor="#0000FF"
+                android:buttonTint="#0000FF"/>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/layoutPriame"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radioSex">
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/priame"
+                android:textColor="#0000FF"
+                android:buttonTint="#0000FF"
+                android:id="@+id/checkBox1"
+                />
+
+            <View
+                android:id="@+id/space"
+                android:layout_height="8dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                />
+
+            <Button
+                android:id="@+id/rychvyhl"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="@string/vyhladat"
+                android:background="#0000FF"
+                android:textColor="#FFFFFF"
+                android:textSize="8pt"
+                android:textStyle="bold"
+                android:visibility="visible"
+                android:layout_marginTop="15dip"
+
+                android:layout_alignParentRight="true"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/ciara3"
+            android:layout_height="4dp"
+            android:layout_width="fill_parent"
+            android:layout_weight="0"
+            android:background="#FFFFFF"
+            android:layout_below="@id/layoutPriame"/>
+
+        <View
+            android:paddingTop="5dip"
+            android:id="@+id/ciara2"
+            android:layout_height="1dp"
+            android:layout_width="fill_parent"
+            android:layout_weight="0"
+            android:layout_marginBottom="8dp"
+            android:background="#0000FF"
+            android:layout_below="@id/ciara3"/>
+
+
+
+
+        <Button
+            android:id="@+id/rozsir"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Rozšírené vyhľadávanie"
+            android:textColor="#FFFFFF"
+            android:background="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/ciara2"
+            android:drawablePadding="10dip"
+            android:layout_marginBottom="10dip"
+            />
+
+
+        <Button
+            android:id="@+id/linky"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Linky"
+            android:textColor="#FFFFFF"
+            android:background="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:layout_below="@id/rozsir"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="10dip"
+            android:layout_marginBottom="10dip"
+            />
+
+
+        <Button
+            android:id="@+id/zastavky"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Zastávky"
+            android:textColor="#FFFFFF"
+            android:background="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:layout_below="@id/linky"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="10dip"
+            android:layout_marginBottom="10dip"
+            />
+
+        <Button
+            android:id="@+id/ulozene"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Uložené spoj."
+            android:textColor="#FFFFFF"
+            android:background="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:layout_below="@id/zastavky"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="10dip"
+            android:layout_marginBottom="10dip"
+            />
+
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:text="Aktualizácia CP"
+            android:textColor="#FFFFFF"
+            android:background="#0000FF"
+            android:textSize="8pt"
+            android:textStyle="bold"
+            android:visibility="visible"
+            android:layout_below="@id/ulozene"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="10dip"
+            android:layout_marginBottom="10dip"
+            />
+
+
+
+    </RelativeLayout>
+
+
+</ScrollView>
