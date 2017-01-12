@@ -170,7 +170,7 @@
                 android:textStyle="bold"
                 android:visibility="visible"
                 android:layout_marginTop="15dip"
-
+                android:onClick="search"
                 android:layout_alignParentRight="true"
                 />
 
