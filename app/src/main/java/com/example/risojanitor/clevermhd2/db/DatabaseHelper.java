@@ -27,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
   private void copyDatabaseIfNecessary(Context context) throws IOException {
     File databasePath = context.getDatabasePath(KE_DB_NAME);
     if (!databasePath.exists()) {
+      databasePath.getParentFile().mkdirs();
       Log.d(TAG, format("Copying default database from %s to destination %s",
         DEFAULT_KE_DB_PATH, databasePath.getPath()));
       copyDefaultDatabaseToPhoneFileDir(context);
