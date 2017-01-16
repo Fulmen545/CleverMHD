@@ -47,4 +47,60 @@ public class DatabaseSelects {
       throw mSQLException;
     }
   }
+
+  public Cursor getLinkySql() {
+    try
+    {
+      String sql ="SELECT distinct linka, smer FROM trvanie order by linka";
+
+      Cursor mCur = database.rawQuery(sql, null);
+      if (mCur!=null)
+      {
+        mCur.moveToNext();
+      }
+      return mCur;
+    }
+    catch (SQLException mSQLException)
+    {
+      Log.e(TAG, "getLinkySql >>"+ mSQLException.toString());
+      throw mSQLException;
+    }
+  }
+
+  public List<String> findAllLinky() {
+    Cursor c = getLinkySql();
+    List<String> linky = new ArrayList<>();
+    if (c != null) {
+      if (c.moveToFirst()) {
+        do {
+          String dir = c.getString(c.getColumnIndex("linka"));
+          linky.add(dir);
+        } while (c.moveToNext());
+      }
+    } else {
+      linky.add("Hello");
+    }
+    return linky;
+  }
+
+  public Cursor getSpecificLinka(String linka)
+  {
+    try
+    {
+      String sql ="SELECT distinct linka, smer FROM trvanie where odkial='"+ linka +"'";
+
+      Cursor mCur = database.rawQuery(sql, null);
+      if (mCur!=null)
+      {
+        mCur.moveToNext();
+      }
+      return mCur;
+    }
+    catch (SQLException mSQLException)
+    {
+      Log.e(TAG, "getSpecificLinka >>"+ mSQLException.toString());
+      throw mSQLException;
+    }
+  }
+
 }

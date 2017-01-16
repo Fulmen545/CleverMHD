@@ -1,14 +1,16 @@
 <resources>
-    <string name="app_name">Clever MHD</string>
-    <string name="action_settings">Settings</string>
-    <string name="odkial">Odkiaľ</string>
-    <string name="kam">Kam</string>
-    <string name="pracovny">Pracovný deň</string>
-    <string name="prazdniny">Prázdniny</string>
-    <string name="vikend">Víkend</string>
-    <string name="priame">Priame spojenie</string>
-    <string name="rychVyhlad2">↧     Rýchle vyhľadanie</string>
-    <string name="rychVyhlad1">↥     Rýchle vyhľadanie</string>
-    <string name="vyhladat">Vyhľadať</string>
-    <string name="kosice">Košice</string>
+  <string name="app_name">Clever MHD</string>
+  <string name="action_settings">Settings</string>
+  <string name="odkial">Odkiaľ</string>
+  <string name="kam">Kam</string>
+  <string name="pracovny">Pracovný deň</string>
+  <string name="prazdniny">Prázdniny</string>
+  <string name="vikend">Víkend</string>
+  <string name="priame">Priame spojenie</string>
+  <string name="rychVyhlad2">↧     Rýchle vyhľadanie</string>
+  <string name="rychVyhlad1">↥     Rýchle vyhľadanie</string>
+  <string name="vyhladat">Vyhľadať</string>
+  <string name="kosice">Košice</string>
+  <string name="title_activity_zastavky">Zastavky</string>
+  <string name="title_activity_linky">Linky</string>
 </resources>

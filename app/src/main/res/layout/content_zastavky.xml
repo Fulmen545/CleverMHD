@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
+  android:id="@+id/content_zastavky"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:paddingBottom="@dimen/activity_vertical_margin"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin"
+  app:layout_behavior="@string/appbar_scrolling_view_behavior"
+  tools:context="com.example.risojanitor.clevermhd2.Zastavky"
+  tools:showIn="@layout/zoznam">
+
+  <LinearLayout
+    android:id="@+id/linkyPopis1"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TextView
+      android:id="@+id/nadpisZoznam"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="16pt"
+      android:textStyle="bold"/>
+
+
+
+
+    <ImageButton android:id="@+id/buttonhome"
+      android:layout_width="40dp"
+      android:layout_height="40dp"
+      android:focusable="true"
+      android:layout_gravity="right"
+      android:background="@drawable/home">
+    </ImageButton>
+  </LinearLayout>
+
+  <LinearLayout
+    android:id="@+id/layoutbuttons"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/radioSex">
+
+    <Button
+      android:id="@+id/spat"
+      android:layout_width="130dp"
+      android:layout_height="wrap_content"
+      android:text="Upraviť"
+      android:textColor="#FFF8DC"
+      android:textSize="8pt"
+      android:textStyle="bold"
+      android:visibility="visible"
+      android:layout_marginTop="15dip"
+
+      android:layout_alignParentRight="true"
+      />
+
+    <View
+      android:id="@+id/space"
+      android:layout_height="8dp"
+      android:layout_width="0dp"
+      android:layout_weight="1"
+      android:background="#FFFFFF"
+      />
+
+    <Button
+      android:id="@+id/viac"
+      android:layout_width="130dp"
+      android:layout_height="wrap_content"
+      android:text="Viac"
+      android:textSize="8pt"
+      android:textColor="#FFF8DC"
+      android:textStyle="bold"
+      android:visibility="visible"
+      android:layout_marginTop="15dip"
+
+      android:layout_alignParentRight="true"
+      />
+
+  </LinearLayout>
+
+  <View
+    android:id="@+id/ciara8"
+    android:layout_height="8dp"
+    android:layout_width="fill_parent"
+    android:layout_weight="0"
+    android:background="#FFFFFF"
+    android:layout_below="@id/layoutbuttons"/>
+
+
+  <TextView
+    android:id="@+id/nadpisPre"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="9pt"
+    android:layout_below="@id/ciara8"/>
+  <LinearLayout
+    android:id="@+id/linkyPopis"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:id="@+id/textLiky"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_weight="1"
+      android:textSize="8pt"
+      android:textStyle="bold"/>
+
+    <View
+      android:layout_width="40dp"
+      android:layout_height="fill_parent"
+      android:background="#FFFFFF"
+      android:layout_weight="3"/>
+
+    <TextView
+      android:id="@+id/textSmer"
+      android:layout_width="wrap_content"
+      android:layout_height="50dp"
+      android:layout_weight="1"
+      android:textSize="8pt"
+      android:textStyle="bold"/>
+
+  </LinearLayout>
+
+
+  <ListView
+    android:id="@android:id/list"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:drawSelectorOnTop="false"
+    />
+
+</LinearLayout>

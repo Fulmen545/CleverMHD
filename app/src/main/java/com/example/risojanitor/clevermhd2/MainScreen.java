@@ -3,6 +3,7 @@ package com.example.risojanitor.clevermhd2;
 import android.app.Activity;
 import android.content.Context;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.example.risojanitor.clevermhd2.db.DatabaseHelper;
@@ -122,8 +124,17 @@ public class MainScreen extends Activity implements TextWatcher {
     rozsir.setBackgroundResource(R.drawable.kosicebutton);
     linky = (Button) findViewById(R.id.linky);
     linky.setBackgroundResource(R.drawable.kosicebutton);
-    stops = (Button) findViewById(R.id.zastavky);
-    stops.setBackgroundResource(R.drawable.kosicebutton);
+    linky.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View view) {
+
+        Intent inn1=new Intent(view.getContext(), Linky.class);
+
+        startActivity(inn1);
+      }
+    });
+
     update = (Button) findViewById(R.id.update);
     update.setBackgroundResource(R.drawable.kosicebutton);
     uloz = (Button) findViewById(R.id.ulozene);
@@ -132,7 +143,7 @@ public class MainScreen extends Activity implements TextWatcher {
     vyhladbtn.setBackgroundResource(R.drawable.kosicebutton);
 
 
-    List<String> zastavky = databaseSelects.findAllBusStops();
+    final List<String> zastavky = databaseSelects.findAllBusStops();
 
     // TODO samy stav, megavela globalnych premennych..to je fest nebezpecne..zamotas sa
     plOdkial = (AutoCompleteTextView) findViewById(R.id.odkialplocha);
@@ -142,7 +153,22 @@ public class MainScreen extends Activity implements TextWatcher {
     plKam = (AutoCompleteTextView) findViewById(R.id.kamplocha);
     plKam.addTextChangedListener(this);
     plKam.setAdapter(new ArrayAdapter<String>(this, android.R.layout.select_dialog_item, zastavky));
+
+    stops = (Button) findViewById(R.id.zastavky);
+    stops.setBackgroundResource(R.drawable.kosicebutton);
+    stops.setOnClickListener(new View.OnClickListener() {
+
+      @Override
+      public void onClick(View view) {
+
+        Intent inn1=new Intent(view.getContext(), Zastavky.class);
+        inn1.putStringArrayListExtra("zastavky", (ArrayList<String>) zastavky);
+        startActivity(inn1);
+      }
+    });
   }
+
+
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
