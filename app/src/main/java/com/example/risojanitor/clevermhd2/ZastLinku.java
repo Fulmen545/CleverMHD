@@ -21,21 +21,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Riso Janitor on 15. 1. 2017.
+ * Created by Riso Janitor on 16. 1. 2017.
  */
 
-public class Linky extends ListActivity {
+public class ZastLinku extends ListActivity {
   private TextView nadpis, textLinky, textSmer, nadpisPre;
-  LinearLayout popis, layoutbuttons;
-  List<String> linklist = new ArrayList<String>();
-  String zastavka;
-  Cursor crLinky;
-  Context packageName;
-  ImageButton home;
-  private DatabaseSelects databaseSelects;
+  private LinearLayout popis, layoutbuttons;
+  private List<String> zastlist = new ArrayList<String>();
+  private String smer, speclinka, linka;
+  private Cursor crZastavky;
+  private ImageButton home;
   private DatabaseHelper databaseHelper;
+  private DatabaseSelects databaseSelects;
 
-  private void init() {
+  public void init() {
     // Here should go all initializations
     try {
       databaseHelper = new DatabaseHelper(getApplication().getApplicationContext());
@@ -45,45 +44,40 @@ public class Linky extends ListActivity {
     databaseSelects = new DatabaseSelects(databaseHelper);
   }
 
-
   /**
    * Metóda na vykreslenia obrazovky
-   * @param savedInstanceState
+   * @param icicle
    */
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    init();
+  public void onCreate(Bundle icicle) {
+    super.onCreate(icicle);
     try {
       setContentView(R.layout.zoznam);
+      init();
 
       nadpis = (TextView) findViewById(R.id.nadpisZoznam);
-      nadpis.setText("Linky");
+      nadpis.setText("Zastávky");
       popis = (LinearLayout) findViewById(R.id.linkyPopis);
-      popis.setVisibility(View.VISIBLE);
+      popis.setVisibility(View.GONE);
+      nadpisPre = (TextView) findViewById(R.id.nadpisPre);
+      nadpisPre.setVisibility(View.VISIBLE);
       layoutbuttons = (LinearLayout) findViewById(R.id.layoutbuttons);
       layoutbuttons.setVisibility(View.GONE);
-      nadpisPre = (TextView) findViewById(R.id.nadpisPre);
-      Intent mIntent = getIntent();
-      zastavka=mIntent.getStringExtra("zastavka");
-      packageName=getApplicationContext();
-      if (zastavka==null){
-        crLinky= databaseSelects.getLinkySql();
-        nadpisPre.setVisibility(View.INVISIBLE);
-      } else {
-        crLinky= databaseSelects.getSpecificLinka(zastavka);
-        nadpisPre.setVisibility(View.VISIBLE);
-        nadpisPre.setText("Pre zastávku: " +zastavka);
-      }
 
-      linklist=getLinky(crLinky);
+      Intent mIntent = getIntent();
+      speclinka=mIntent.getStringExtra("specZast");
+      linka=getNazovLinky(speclinka);
+      nadpisPre.setText("Pre Linku: " +speclinka);
+
+      crZastavky=databaseSelects.getZoznZast(linka, smer);
+
+      zastlist=getZastavky(crZastavky);
       setListAdapter(new ArrayAdapter<String>(this,
         android.R.layout.simple_list_item_1,
-        linklist));
+        zastlist));
       textLinky=(TextView)findViewById(R.id.textLiky);
       textLinky.setText("Linka");
       textSmer=(TextView)findViewById(R.id.textSmer);
       textSmer.setText("Smer");
-
 
         nadpis.setTextColor(Color.parseColor("#0000FF"));
         textLinky.setTextColor(Color.parseColor("#0000FF"));
@@ -98,6 +92,7 @@ public class Linky extends ListActivity {
         public void onClick(View view) {
 
           Intent inn1=new Intent(view.getContext(), MainScreen.class);
+
           startActivity(inn1);
         }
       });
@@ -107,7 +102,6 @@ public class Linky extends ListActivity {
     }
 
   }
-
 
   /**
    * Metóda pre funkcionalitu zoznamu
@@ -119,23 +113,36 @@ public class Linky extends ListActivity {
   public void onListItemClick(ListView parent, View v, int position,
                               long id) {
 
-    Intent inn1=new Intent(v.getContext(), ZastLinku.class);
-    inn1.putExtra("specZast", linklist.get(position));
+    Intent inn1=new Intent(v.getContext(), CasyPreZast.class);
+    inn1.putExtra("linka",linka);
+    inn1.putExtra("smer",smer);
+    inn1.putExtra("odkial", zastlist.get(position));
 
     startActivity(inn1);
   }
 
   /**
-   * Metóda na získanie liniek z databázy
-   * @param c
-   * @return Zoznam liniek
+   * Metóda na získanie názvu linky
+   * @param nazov
+   * @return
    */
-  public List<String> getLinky(Cursor c){
+  public String getNazovLinky(String nazov){
+    String[] help = nazov.split("\\|\\|");
+    smer=help[1].substring(2);
+    return help[0].substring(0, help[0].length()-2);
+  }
+
+  /**
+   * Metóda na získanie zastávok
+   * @param c
+   * @return
+   */
+  public List<String> getZastavky(Cursor c){
     List<String> linky = new ArrayList<String>();
     if (c != null ) {
       if  (c.moveToFirst()) {
         do {
-          String dir = c.getString(c.getColumnIndex("linka"))+ "  ||  " + c.getString(c.getColumnIndex("smer"));
+          String dir = c.getString(c.getColumnIndex("kam"));
           linky.add(dir);
         }while (c.moveToNext());
       }
@@ -144,5 +151,4 @@ public class Linky extends ListActivity {
     }
     return linky;
   }
-
 }

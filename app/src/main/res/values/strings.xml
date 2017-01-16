@@ -13,4 +13,5 @@
   <string name="kosice">Košice</string>
   <string name="title_activity_zastavky">Zastavky</string>
   <string name="title_activity_linky">Linky</string>
+  <string name="title_activity_casy_pre_zast">Casy Pre Zastavku</string>
 </resources>

@@ -20,17 +20,29 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-
-
     <activity
       android:name=".Zastavky"
       android:label="@string/title_activity_zastavky"
-      android:theme="@style/AppTheme.NoActionBar"></activity>
-
-
+      android:theme="@style/AppTheme.NoActionBar" />
     <activity
       android:name=".Linky"
       android:label="@string/title_activity_linky"
+      android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".ZastLinku"
+      android:label="@string/title_activity_linky"
+      android:theme="@style/AppTheme.NoActionBar" />
+    <activity
+      android:name=".CasyPreZast"
+      android:label="@string/title_activity_casy_pre_zast"
+      android:theme="@style/AppTheme.NoActionBar"></activity>
+    <activity
+      android:name=".tabs.CasyPraca"
+      android:label="@string/title_activity_casy_pre_zast"
+      android:theme="@style/AppTheme.NoActionBar"></activity>
+    <activity
+      android:name=".tabs.ZoznamZast"
+      android:label="@string/title_activity_casy_pre_zast"
       android:theme="@style/AppTheme.NoActionBar"></activity>
   </application>
 

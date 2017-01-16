@@ -40,23 +40,14 @@ public class MainScreen extends Activity implements TextWatcher {
   private RadioButton praca, prazd, vikend;
   private CheckBox priameSpoj;
 
-  private DatabaseHelper databaseHelper;
   private DatabaseSelects databaseSelects;
 
-  private void init() {
-    // Here should go all initializations
-    try {
-      databaseHelper = new DatabaseHelper(getApplication().getApplicationContext());
-    } catch (IOException e) {
-      throw new RuntimeException("Unable to initialize database helper!", e);
-    }
-    databaseSelects = new DatabaseSelects(databaseHelper);
-  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    init();
+    DatabaseSelects.init(getApplicationContext());
+    databaseSelects = DatabaseSelects.getInstance();
     setContentView(R.layout.activity_main_screen);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     toolbar.setTitle("Clever MHD");
